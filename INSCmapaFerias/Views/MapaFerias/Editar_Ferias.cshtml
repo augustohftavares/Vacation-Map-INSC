@@ -1,0 +1,101 @@
+﻿@model  INSCmapaFerias.Areas.Identity.Data.Events;
+
+@{
+    ViewData["Title"] = "Editar Férias";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col card">
+
+            <form asp-action="Editar_Ferias" class="formAddEvent">
+
+                <h3>@ViewData["Title"]</h3>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label  class="control-label">Dias sugeridos: De</label>
+                    <input asp-for="Options" class="form-control" readonly/>
+                    <span asp-validation-for="Options" class="text-danger"></span>
+
+                    <label class="control-label espacoInputs">Até</label>
+                    <input asp-for="Options_End" class="form-control" readonly/>
+                    <span asp-validation-for="Options_End" class="text-danger"></span>
+
+                    <label asp-for="event_id" class="control-label" hidden></label>
+                    <input asp-for="event_id" class="form-control" readonly hidden/>
+                    <span asp-validation-for="event_id" class="text-danger" hidden></span>
+
+                    <label asp-for="Title" class="control-label espacoInputs"></label>
+                    <input asp-for="Title" class="form-control" readonly/>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+
+                    <label asp-for="event_start" class="control-label espacoInputs"></label>
+                    <input asp-for="event_start" class="form-control fromdate" id="fromdate"/>
+                    <span asp-validation-for="event_start" class="text-danger"></span>
+
+                    <label asp-for="event_end" class="control-label espacoInputs"></label>
+                    <input asp-for="event_end" class="form-control todate" id="todate"/>
+                    <span asp-validation-for="event_end" class="text-danger"></span>
+
+                    <p class="resultDays" id="resultDays"></p>
+                    <p class="resultDaysNaN" id="resultDaysNaN"></p>
+
+                    <a asp-action="Index" class="btn botaoEditarFeriasVoltarCRUD">Voltar</a>
+                    <input type="submit" value="Editar" class="btn botaoEditarFeriasCRUD" />
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+
+            <img src="~/img/farol.png" class="imgFarol"/>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+    
+    @if(TempData["FeriasEditError1"] != null)
+    {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro',
+                html: 'Verifica se as datas estão entre as datas sugeridas pelo administrador!',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+            })    
+        
+        </script>
+    }
+
+    @if(TempData["FeriasEditError2"] != null)
+    {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro',
+                html: 'A data de inicio não pode ser maior que a data de fim e vice-versa!',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+            })    
+        
+        </script>
+    }
+    
+}

@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TITLE -->
+    <title>INSC - @ViewData["Title"] </title>
+
+    <!-- LOGO -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/logo.png" />
+
+    <!-- ALL CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/INSCmapaFerias.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" />
+
+    <!-- ALL SCRIPTS-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/geralfunctions.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.2,npm/fullcalendar@5.11.2/locales-all.min.js,npm/fullcalendar@5.11.2/main.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-white bg-white border-bottom box-shadow mb-3 ">
+
+            <div class="container-fluid">
+
+                <!-- LOGO -->
+                <div class="navbar-brand"> 
+                    <a asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" alt="insclogo" title="https://www.insc.pt/" class="logo" /></a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon bg-primary text-white"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Utilizadores") || User.IsInRole("Administradores"))
+                        {
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="Home" asp-action="Index">Página Inicial</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="MapaFerias" asp-action="Index">Mapa Férias</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="MapaFerias" asp-action="Pedir_Ferias">Pedir Férias</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="Home" asp-action="Paternidade">Paternidade</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="Home" asp-action="Horas_Extra">Horas Extra</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="navi-link" asp-controller="MapaFerias" asp-action="Funcionarios">Funcionários</a>
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div> <!--end navbar-colpse -->
+
+            </div> <!-- end container-fluid -->
+
+            <partial name="_LoginPartial" />
+
+        </nav>
+
+    </header>
+
+    <div class="container-fluid">
+
+        <main role="main" class="pb-3">
+
+            <!-- LOGIN COM SUCESSO ALERTA -->
+            @if (TempData["LoginSuccess"] != null)
+            {
+                <script>
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Login efetuado com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                </script>
+            }             
+
+            <!-- REGISTER EFETUADO COM SUCESSO ALERTA-->
+            @if (TempData["RegisterSuccess"] != null)
+            {
+                <script>
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Register efetuado com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                </script>
+            }  
+
+            <!-- LOGOUT EFETUADO COM SUCESSO ALERTA -->
+            @if (TempData["LogoutSuccess"] != null)
+            {
+                <script>
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Saiste da conta com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                </script>
+            }  
+            @RenderBody()
+
+        </main>
+
+    </div><!--end div container-fluid -->
+
+    <footer class="text-center">
+        
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col">
+
+                    <p style="margin-top: 20px;">
+
+                        INSC – Informática, Serviços & Consultadoria LDA © 2022 
+                
+                        <br />
+                
+                        Todos os direitos reservados | <a class="termosCondicoes" href="https://www.insc.pt/wp-content/uploads/2021/01/Termos-e-Condicoes_INSC.pdf">Termos e Condições</a>
+                    </p>
+
+                </div> <!--end div col-->
+
+                <div class="col">
+            
+                    <a href="https://www.insc.pt/wp-content/uploads/Cofinanciamento.pdf" class="class="adaptar-ram">
+
+                        <img src="~/img/ADAPTAR-RAM.webp" alt="ADAPTAR-RAM"/>
+                        
+                    </a>
+
+                </div><!-- end div col-->
+
+            </div> <!--end div row-->
+
+        </div><!--end div container-->
+
+    </footer>
+
+    
+    @section Scripts {<script src="~/js/alerts.js"></script>}
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

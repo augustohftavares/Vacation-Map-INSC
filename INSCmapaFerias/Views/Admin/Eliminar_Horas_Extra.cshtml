@@ -1,0 +1,41 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.Overtime;
+
+@{
+    ViewData["Title"] = "Eliminar Horas extra";
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+            <img src="~/img/farol_error.png" />
+        </div>
+
+        <div class="col card">
+
+            <form class="formDeleteUser" asp-action="Eliminar_Horas_Extra">
+
+                <h2 class="text-danger">Pretendes mesmo eliminar estas horas extra?</h2>
+                <p class="small text-danger">Esta ação não pode ser revertida!!</p>
+
+                <label class="form-label espacoInputs" asp-for="OvertimeName"></label>
+                <input class="form-control" type="text" asp-for="OvertimeName" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="OvertimeStart"></label>
+                <input class="form-control" type="text" asp-for="OvertimeStart" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="OvertimeEnd"></label>
+                <input class="form-control" type="text" asp-for="OvertimeEnd" readonly/>
+
+                <a asp-action="Gestor_De_Ferias" class="btn botaoEliminarVoltarCRUD">Não, Voltar</a>
+                <input class="btn botalEliminarFeriasCRUD" type="submit" value="Sim, Eliminar" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

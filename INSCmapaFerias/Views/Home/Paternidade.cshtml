@@ -1,0 +1,45 @@
+﻿@model IEnumerable<INSCmapaFerias.Areas.Identity.Data.Paternity>;
+
+@{
+    ViewData["Title"] = "Paternidade";
+}
+
+
+<div class="container">
+
+
+    <div class="row">
+
+        <div class="col text-center card">
+
+            <h1 class="text-center">Funcionários com licença de paternidade</h1>
+            @if (Model == null)
+            {
+                @foreach (var item in Model)
+                {
+                    <ul style="list-style-type: none; margin-top: 50px">
+                        <li class="listaPaternidade">
+
+
+                            @Html.DisplayFor(modelItem => item.Name) - <b>de</b> @Html.DisplayFor(modelItem => item.PaternityStart) <b>até</b> @Html.DisplayFor(modelItem => item.PaternityEnd)   
+                            (@Html.DisplayFor(modelItem => item.Total) dias)
+
+
+                        </li>
+                    </ul>
+                }
+            } else
+            {
+                <p>Nenhum funcionário está de licença de paternidade.</p>
+            }
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+
+            <img src="~/img/farol_insc.png" class="imgFarol"/>
+
+        </div>
+
+    </div>
+
+</div>

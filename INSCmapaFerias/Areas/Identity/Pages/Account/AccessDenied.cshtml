@@ -1,0 +1,19 @@
+﻿@page
+@model AccessDeniedModel
+
+@using Microsoft.AspNetCore.Identity
+@using INSCmapaFerias.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Acesso Negado";
+}
+
+<header>
+
+    <h1 class="text-danger">Não tens acesso a esta página</h1>
+    <p class="text-danger">Esta página é utilizada apenas por administradores.</p>
+
+</header>

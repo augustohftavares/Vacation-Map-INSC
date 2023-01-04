@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+
+            <h1 class="text-center">Mapa de férias <span id="currentYear"></span></h1>
+            <p class="text-center"><a asp-controller="MapaFerias" asp-action="Pedir_Ferias">Peça as suas férias</a></p>
+
+        </div><!--end div col-->
+
+    </div><!--end div row-->
+
+    <hr />
+
+    <div class="row rowIndex">
+
+        <div class="col">
+
+
+            <h2><img src="~/img//calendar.png" alt="calendário" title="calendário" class="calendarioIndex"/>Como funciona o calendário de férias?</h2>
+
+            <p class="pIndex">Esta aplicação preenche uma agenda de férias compartilhada com base nas agendas individuais de cada pessoa.
+               Quando uma pessoa pede um horário, o pedido fica registado no calendário à espera de uma aprovação ou rejeição de um <span class="text-danger">administrador</span>. </p>
+
+            
+
+            <p class="pIndex">Os Administradores são responsáveis pela configuração da aplicação de forma a corresponder ao seu mapa de férias. 
+               Além disso, o administrador tem a capacidade de remover utilizadores e férias apenas rejeitadas.
+            </p>
+
+            <p class="pIndex">As contas dos funcionários poderão redefinir facilmente a partir da página "perfil".
+                Os funcionários poderão clicar em "pedir férias" e solicitar as suas férias. 
+                Os mesmos poderão visualizar as férias dos seus colegas.</p>
+
+
+            <a asp-controller="MapaFerias" asp-action="Index" class="btn botaoVerMapaIndex">Visualizar mapa de férias</a>
+
+        </div><!--end div col-->
+
+        <div class="col">
+            <img class="imgFarol" src="~/img/farol_insc.png" />
+        </div>
+
+
+    </div><!--end div row-->
+
+</div><!--end div container-->
+
+@section Scripts {<script src="~/js/geralfunctions.js"></script>}
+

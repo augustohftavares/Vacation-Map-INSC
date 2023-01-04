@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel;
+
+@{
+    ViewData["Title"] = "Altere o seu email";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<hr />
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row">
+    
+    <div class="col">
+        
+        <form class="perfilForm"  id="profile-form" method="post">
+             
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <p><span class="pEmailAtual">O seu email atual:</span> @User.Identity.Name</p>
+
+            <div class="form-floating">
+                <input asp-for="Username" class="form-control" />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            
+            <button id="update-profile-button" type="submit" class="w-100 btn botaoAlterarPerfilEmail">Alterar email</button>
+        
+        </form>
+    
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

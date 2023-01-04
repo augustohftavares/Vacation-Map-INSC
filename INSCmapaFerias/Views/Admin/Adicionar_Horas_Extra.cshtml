@@ -1,0 +1,82 @@
+﻿@model  INSCmapaFerias.Areas.Identity.Data.Overtime;
+
+@{
+    ViewData["Title"] = "Adicionar Horas Extra";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col card">
+
+            <form class="formAddOvertime" id="formAddOvertime" asp-action="Adicionar_Horas_Extra">
+
+                <h3>@ViewData["Title"]</h3>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="OvertimeName" class="control-label espacoInputs"></label>
+                    <input asp-for="OvertimeName" class="form-control" />
+                    <span asp-validation-for="OvertimeName" class="text-danger" ></span>
+
+                    <label asp-for="OvertimeStart" class="control-label espacoInputs"></label>
+                    <input asp-for="OvertimeStart" class="form-control"/>
+                    <span asp-validation-for="OvertimeStart" class="text-danger"></span>
+
+                    <label asp-for="OvertimeEnd" class="control-label espacoInputs"></label>
+                    <input asp-for="OvertimeEnd" class="form-control"/>
+                    <span asp-validation-for="OvertimeEnd" class="text-danger"></span>
+
+                    <label asp-for="Hours" class="control-label espacoInputs"></label>
+                    <input asp-for="Hours" type="time" class="form-control"/>
+                    <span asp-validation-for="Hours" class="text-danger"></span>
+
+
+                </div>
+
+                <a href="#" onclick="document.getElementById('formAddOvertime').submit();" class="btn botaoPedirFerias espacoInputs">Adicionar</a>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+
+            <img src="~/img/farol.png" class="imgFarol"/>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script>
+
+    $(document).ready(function(){
+
+        $("select").change(function(){
+            $(this).find("option:selected").each(function(){
+
+                var optionValue = $(this).attr("value");
+            
+                if(optionValue){
+                
+                    $(".options").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+
+                } else{
+                    $(".options").hide();
+                }
+            });
+        }).change();
+
+
+    });
+
+</script>
+}<!--end scripts section-->

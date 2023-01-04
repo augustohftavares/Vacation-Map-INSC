@@ -1,0 +1,77 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.Events;
+
+@using Microsoft.AspNetCore.Identity
+@using INSCmapaFerias.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Peça as suas férias aqui!";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col card cardPedirFerias">
+             <form class="formAddEvent" id="formAddEvent" asp-action="Pedir_Ferias" >
+                <h2>@ViewData["Title"]</h2>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="event_start" class="control-label espacoInputs"></label><span class="text-danger">*</span>
+                    <input asp-for="event_start" class="form-control fromdate" id="fromdate"/>
+                    <span asp-validation-for="event_start" class="text-danger"></span>
+                    <label asp-for="event_end" class="control-label espacoInputs"></label><span class="text-danger">*</span>
+                    <input asp-for="event_end" class="form-control todate" id="todate"/>
+                    <span asp-validation-for="event_end" class="text-danger"></span>
+                    <p class="resultDays" id="resultDays"></p>
+                    <a href="#" onclick="document.getElementById('formAddEvent').submit();" class="btn botaoPedirFerias espacoInputs">Pedir Férias</a>
+                </div><!--end div form-group-->
+
+                <h2 class="informacoesPedidos">Informações úteis sobre os pedidos </h2>
+                <hr />
+                <p>-> Não conseguirás pedir férias com o valor superior a 22 dias</p>
+                <p>-> Caso tenhas feito menos de 22 dias de férias no ano anterior e queiras adiciona-las a este ano contacta um administrador para que te possa concedê-las.</p>
+            </form>
+
+        </div>
+
+        <div class="col">
+            <img class="imgFarol" src="~/img/farol_insc.png" />
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    
+    @if(TempData["FeriasErrorLimit22"] != null)
+    {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro',
+                html: 'Ultrapasseste o limite de férias permitido por ano:<br><b>(22 dias)</b>',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+            })    
+        
+        </script>
+    } else if (TempData["FeriasInvalidDates"] != null) {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Datas Inválidas!',
+                html: 'A data de inicio não pode ser maior que a data de fim e vice-versa!',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+            })    
+        
+        </script>
+    }
+
+}

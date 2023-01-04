@@ -1,0 +1,80 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.ApplicationUser;
+
+@{
+    ViewData["Title"] = "Editar Utilizador";
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col card">
+            
+
+
+            <form asp-action="Editar_Utilizador" class="EditarForm">
+
+                <h2>@ViewData["Title"]</h2>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="Id" class="control-label" hidden></label>
+                    <input asp-for="Id" class="form-control" readonly hidden/>
+                    <span asp-validation-for="Id" class="text-danger"></span>
+
+                    <label asp-for="AdmissionDate" class="control-label espacoInputs"></label>
+                    <input asp-for="AdmissionDate" class="form-control" />
+                    <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+
+                    <label asp-for="prof_category" class="espacoInputs"></label>
+                    <select asp-for="prof_category" id="status" class="dropdownStatus">
+                        <option value="Diretor Geral">Diretor Geral</option>
+                        <option value="Assistente da Direção">Assistente da Direção</option>
+                        <option value="Responsável Consultoria">Responsável Consultoria</option>
+                        <option value="Consultor Software">Consultor Software</option>
+                        <option value="Responsável Sistemas">Responsável Sistemas</option>
+                        <option value="Sistemas">Sistemas</option>
+                        <option value="Assistente Administrativa">Assistente Administrativa</option>
+                        <option value="Assistente Financeira">Assistente Financeira</option>
+                        <option value="Responsável Marketing">Responsável Marketing</option>
+                        <option value="Técnica de Marketing">Técnica de Marketing</option>
+                        <option value="Webdesigner">Webdesigner</option>
+                        <option value="Comercial">Comercial</option>
+                        <option value="Nenhum">Nenhum</option>
+                    </select>
+
+                    <label asp-for="FirstName" class="control-label espacoInputs"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                    <label asp-for="LastName" class="control-label espacoInputs"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+
+                    <label asp-for="UserName" class="control-label espacoInputs"></label>
+                    <input asp-for="UserName" class="form-control" readonly/>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
+                    <label asp-for="userImage" class="control-label espacoInputs"></label>
+                    <input asp-for="userImage" class="form-control"/>
+                    <span asp-validation-for="userImage" class="text-danger"></span>
+
+                    <a asp-action="Gestor_de_Utilizadores" class="btn botaoEditarUtilizadoresVoltarCRUD">Voltar</a>
+                    <input type="submit" value="Editar" class="btn botaoEditarUtilizadoresCRUD" />
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+            <img class="imgFarol" src="~/img/farol.png" />
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<INSCmapaFerias.Areas.Identity.Data.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Gestor de Utilizadores";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <h1 class="text-center">@ViewData["Title"]</h1>
+
+    </div>
+
+   <div class="row">
+
+        <input class="form-control" type="text" id="searchUsers" onkeyup="searchBarUsers()" placeholder="Pesquisar utilizadores..." title="Pesquisar utilizadores">
+
+       <table class="table" id="tableUsers">
+  
+
+            <caption>Lista de utilizadores</caption>
+  
+            <thead>
+    
+                <tr class="trHeader">
+                    <th scope="col">@Html.DisplayNameFor(model => model.AdmissionDate)</th> 
+                    <th scope="col">@Html.DisplayNameFor(model => model.prof_category)</th> 
+                    <th scope="col">@Html.DisplayNameFor(model => model.FirstName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.LastName)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.Email)</th> 
+                    <th scope="col">@Html.DisplayNameFor(model => model.userImage)</th> 
+                    <th></th>
+                </tr>
+  
+            </thead>
+  
+            <tbody>
+
+                @foreach (var item in Model){
+                    <tr class="trBody">
+                        <td>@Html.DisplayFor(modelItem => item.AdmissionDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.prof_category)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.userImage)</td>
+                        <td>
+                            <a class="btn botaoEditarCRUD" asp-action="Editar_Utilizador" asp-route-id="@item.Id">Editar</a>
+                            <a class="btn botaoEliminarCRUD" asp-action="Eliminar_Utilizador" asp-route-id="@item.Id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+   </div>
+
+</div>
+
+@section Scripts{
+
+    <!-- USER EDIT SUCCESS-->
+    @if (TempData["UserEditSuccess"] != null)
+    {
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Atualizado com sucesso',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+        });
+        </script>
+    } else if(TempData["UserRemoveSuccess"] != null) {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'info',
+                title: 'Removido com sucesso',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+            });
+        </script>
+    } else if(TempData["UserEditNull"] != null) {
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro',
+                html: 'Não foi possível identificar o utilizador, entre em contato com um <span class="text-danger">administrador</span>.',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+            });
+        </script>
+    }
+
+}

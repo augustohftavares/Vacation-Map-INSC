@@ -1,0 +1,78 @@
+﻿@model  INSCmapaFerias.Areas.Identity.Data.Paternity;
+
+@{
+    ViewData["Title"] = "Adicionar Paternidade";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col card">
+
+            <form class="formAddPaternity" id="formAddPaternity" asp-action="Adicionar_Paternidade">
+
+                <h3>@ViewData["Title"]</h3>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="Name" class="control-label espacoInputs"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger" ></span>
+
+                    <label asp-for="PaternityStart" class="control-label espacoInputs"></label>
+                    <input asp-for="PaternityStart" class="form-control"/>
+                    <span asp-validation-for="PaternityStart" class="text-danger"></span>
+
+                    <label asp-for="PaternityEnd" class="control-label espacoInputs"></label>
+                    <input asp-for="PaternityEnd" class="form-control"/>
+                    <span asp-validation-for="PaternityEnd" class="text-danger"></span>
+
+
+                </div>
+
+                <a href="#" onclick="document.getElementById('formAddPaternity').submit();" class="btn botaoPedirFerias espacoInputs">Adicionar</a>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+
+            <img src="~/img/farol.png" class="imgFarol"/>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script>
+
+    $(document).ready(function(){
+
+        $("select").change(function(){
+            $(this).find("option:selected").each(function(){
+
+                var optionValue = $(this).attr("value");
+            
+                if(optionValue){
+                
+                    $(".options").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+
+                } else{
+                    $(".options").hide();
+                }
+            });
+        }).change();
+
+
+    });
+
+</script>
+}<!--end scripts section-->

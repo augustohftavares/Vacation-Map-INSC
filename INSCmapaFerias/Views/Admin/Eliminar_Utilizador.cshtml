@@ -1,0 +1,47 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.ApplicationUser;
+
+@{
+    ViewData["Title"] = "Eliminar utilizador ?";
+}
+
+<div class="container ">
+
+    <div class="row">
+
+        <div class="col">
+            <img src="~/img/farol_error.png" />
+        </div>
+
+        <div class="col card">
+
+            <form class="formDeleteUser" asp-action="Eliminar_Utilizador">
+
+                <h2 class="text-danger">Pretendes mesmo eliminar este utilizador?</h2>
+                <p class="small text-danger">Esta ação não pode ser revertida!!</p>
+
+                <label class="form-label espacoInputs" asp-for="AdmissionDate"></label>
+                <input class="form-control" asp-for="AdmissionDate" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="prof_category"></label>
+                <input class="form-control" asp-for="prof_category" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="FirstName"></label>
+                <input class="form-control" asp-for="FirstName" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="LastName"></label>
+                <input class="form-control" asp-for="LastName" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="UserName"></label>
+                <input class="form-control" asp-for="UserName" readonly/>
+            
+                <a asp-action="Gestor_De_Utilizadores" class="btn botaoEliminarUtilizadoresVoltarCRUD">Não, Voltar</a>
+                <input class="form-control btn botalEliminarUtilizadoresFeriasCRUD" type="submit" value="Sim" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>

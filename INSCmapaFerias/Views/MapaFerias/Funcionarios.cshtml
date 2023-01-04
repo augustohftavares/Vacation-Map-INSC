@@ -1,0 +1,67 @@
+﻿@model IEnumerable<INSCmapaFerias.Areas.Identity.Data.ApplicationUser>;
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <h1 class="text-center">Funcionários</h1>
+
+    </div>
+
+    <div class="row">
+                
+        @foreach (var item in Model){
+      
+        <div class="col-sm-6 col-lg-4" >
+
+            <div class="box-bg">
+          
+                <div class="userImage">
+
+                    <img src="@Url.Content(item.userImage)" class="staff-img img-fluid" >
+                    
+                </div>
+
+                <div class="details">
+
+                    <h4 class="text-center titleFuncionarios">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h4>
+                    <ul>
+
+                        <li><b>@Html.DisplayNameFor(model => model.AdmissionDate):</b> @Html.DisplayFor(modelItem => item.AdmissionDate)</li>
+                        <li><b>@Html.DisplayNameFor(model => model.Email): </b>@Html.DisplayFor(modelItem => item.UserName)</li>
+                        <li>
+                            <b>@Html.DisplayNameFor(model => model.prof_category): </b>
+                            
+                            @if(item.prof_category == "Diretor Geral")
+                            {
+                                <span class="text-danger fw-bold">@Html.DisplayFor(modelItem => item.prof_category)</span>
+                            }else{
+                                <span class="text-dark">@Html.DisplayFor(modelItem => item.prof_category)</span>
+                            }
+
+                        </li>
+
+                        @*<li>
+                            @Html.ActionLink(
+                                "Férias",
+                                "Detalhes",
+                                new { id=item.Id },
+                                new { @class="btn botaoVerFeriasUtilizador"}
+                            )
+                        </li>*@
+
+                    </ul>
+                
+                </div>
+          
+            </div>
+
+        </div>
+        }<!--end foreach-->
+    </div>
+
+</div>

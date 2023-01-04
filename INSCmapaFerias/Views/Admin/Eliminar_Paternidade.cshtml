@@ -1,0 +1,41 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.Paternity;
+
+@{
+    ViewData["Title"] = "Eliminar Paternidade";
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+            <img src="~/img/farol_error.png" />
+        </div>
+
+        <div class="col card">
+
+            <form class="formDeleteUser" asp-action="Eliminar_Paternidade">
+
+                <h2 class="text-danger">Pretendes mesmo eliminar esta paternidade?</h2>
+                <p class="small text-danger">Esta ação não pode ser revertida!!</p>
+
+                <label class="form-label espacoInputs" asp-for="Name"></label>
+                <input class="form-control" type="text" asp-for="Name" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="PaternityStart"></label>
+                <input class="form-control" type="text" asp-for="PaternityStart" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="PaternityEnd"></label>
+                <input class="form-control" type="text" asp-for="PaternityEnd" readonly/>
+
+                <a asp-action="Gestor_De_Ferias" class="btn botaoEliminarVoltarCRUD">Não, Voltar</a>
+                <input class="btn botalEliminarFeriasCRUD" type="submit" value="Sim, Eliminar" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,65 @@
+﻿@using INSCmapaFerias.Data
+@using Microsoft.AspNetCore.Identity
+@using INSCmapaFerias.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+
+        @if(User.Identity.IsAuthenticated && User.IsInRole("Administradores")){
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle navi-link nav-adm" data-bs-toggle="dropdown">Admin</a>
+
+                <div class="dropdown-menu">
+
+                    <a asp-controller="Admin" asp-action="Gestor_de_Utilizadores" class="dropdown-item">Gestor de utilizadores</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a asp-controller="Admin" asp-action="Gestor_de_Ferias" class="dropdown-item">Gestor de férias</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a asp-controller="Admin" asp-action="Gestor_de_Paternidades" class="dropdown-item">Gestor de paternidades</a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a asp-controller="Admin" asp-action="Gestor_Horas_Extra" class="dropdown-item">Gestor de horas extra</a>
+
+                </div>
+            </li>
+        }
+
+    <li class="nav-item">
+
+        <a id="manage" class="nav-link perfil-nav btnPerfil" asp-area="Identity" asp-page="/Account/Manage/Index" title="Perfil">Perfil</a>
+
+    </li>
+
+
+    <li class="nav-item">
+
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="nav-link btn btn-link btn-danger btnLogout">Sair</button>
+        </form>
+
+    </li>
+
+
+}
+else
+{
+    <li class="nav-item">
+        <a class="navi-link" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="navi-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

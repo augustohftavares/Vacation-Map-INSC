@@ -1,0 +1,41 @@
+﻿@model INSCmapaFerias.Areas.Identity.Data.Events;
+
+@{
+    ViewData["Title"] = "Eliminar Férias";
+}
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col">
+            <img src="~/img/farol_error.png" />
+        </div>
+
+        <div class="col card">
+
+            <form class="formDeleteUser" asp-action="Eliminar_Ferias">
+
+                <h2 class="text-danger">Pretendes mesmo eliminar estas férias?</h2>
+                <p class="small text-danger">Esta ação não pode ser revertida!!</p>
+
+                <label class="form-label espacoInputs" asp-for="Title"></label>
+                <input class="form-control" type="text" asp-for="Title" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="event_start"></label>
+                <input class="form-control" type="text" asp-for="event_start" readonly/>
+
+                <label class="form-label espacoInputs" asp-for="event_end"></label>
+                <input class="form-control" type="text" asp-for="event_end" readonly/>
+
+                <a asp-action="Gestor_De_Ferias" class="btn botaoEliminarVoltarCRUD">Não, Voltar</a>
+                <input class="btn botalEliminarFeriasCRUD" type="submit" value="Sim, Eliminar" />
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

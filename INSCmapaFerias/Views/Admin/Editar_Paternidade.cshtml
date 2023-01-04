@@ -1,0 +1,65 @@
+﻿@model  INSCmapaFerias.Areas.Identity.Data.Paternity;
+
+@{
+    ViewData["Title"] = "Editar Paternidade";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col card">
+
+            <form asp-action="Editar_Paternidade" class="formAddEvent">
+
+                <h3>@ViewData["Title"]</h3>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+
+                    <label asp-for="PaternityId" class="control-label" hidden></label>
+                    <input asp-for="PaternityId" class="form-control" readonly hidden/>
+                    <span asp-validation-for="PaternityId" class="text-danger" hidden></span>
+
+                    <label asp-for="Name" class="control-label espacoInputs"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                    <label asp-for="PaternityStart" class="control-label espacoInputs"></label>
+                    <input asp-for="PaternityStart" class="form-control" />
+                    <span asp-validation-for="PaternityStart" class="text-danger"></span>
+
+                    <label asp-for="PaternityEnd" class="control-label espacoInputs"></label>
+                    <input asp-for="PaternityEnd" class="form-control"/>
+                    <span asp-validation-for="PaternityEnd" class="text-danger"></span>
+
+                    <a asp-action="Gestor" class="btn botaoEditarFeriasVoltarCRUD">Voltar</a>
+                    <input type="submit" value="Editar" class="btn botaoEditarFeriasCRUD" />
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col" style="margin-top: 40px;">
+
+            <img src="~/img/farol.png" class="imgFarol"/>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script>
+
+    $(document).ready(function(){
+
+    });
+
+</script>
+}<!--end scripts section-->
